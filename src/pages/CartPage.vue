@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th scope="col" class="w-10">Product ID</th>
-            <th scope="col" class="w-50">Item</th>
+            <th scope="col" class="w-50">Name</th>
             <th scope="col" class="w-10">Quantity</th>
             <th scope="col" class="w-10">Price/item</th>
             <th scope="col" class="w-20"></th>
@@ -24,10 +24,7 @@
               <tr v-for="product in allItems" :key="product.id">
                 <td>{{product.id}}</td>
                 <td class="d-flex">
-                  <img
-                    :src="product.images"
-    
-                  />
+                  <img :src="product.images"/>
                   <span>{{product.title}}</span>
                 </td>
                 <td>

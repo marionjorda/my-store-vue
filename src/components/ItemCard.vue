@@ -1,15 +1,9 @@
 <template>
   <div class="card shadow-sm">
-    <img
-      class="card-img-top card-image"
-      :src="product.image"
-      alt="Card image cap"
-    />
+    <img class="card-img-top card-image" :src="product.images" alt="Card image cap"/>
     <div class="card-body">
-      <h5 class="card-title" @click="productDetails(product.id)">
-        {{ product.title }}
-      </h5>
-      <h5 class="card-title">{{ product.price}} €</h5>
+      <h5 class="card-title" @click="productDetails(product.id)">{{ product.title }}</h5>
+      <h5 class="card-title">{{ product.price }} €</h5>
       <p class="card-text desc">{{ product.description }}</p>
       <p class="card-text">{{ product.category }}</p>
       <div class="d-flex" style="justify-content: space-around">
