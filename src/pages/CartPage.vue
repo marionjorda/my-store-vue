@@ -25,7 +25,7 @@
                 <td>{{product.id}}</td>
                 <td class="d-flex">
                   <img
-                    :src="product.image"
+                    :src="product.images"
     
                   />
                   <span>{{product.title}}</span>
@@ -153,7 +153,7 @@ table {
   height: 70px;
 }
 
-.card-image {
+.card-images {
   max-height: 200px;
   padding: 25px;
 }

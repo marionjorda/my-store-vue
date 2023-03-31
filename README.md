@@ -1,4 +1,4 @@
-# new-partiel-vue
+# my-store-vue
 
 ## Project setup
 ```
