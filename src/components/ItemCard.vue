@@ -7,16 +7,13 @@
       <p class="card-text desc">{{ product.description }}</p>
       <p class="card-text">{{ product.category }}</p>
       <div class="d-flex" style="justify-content: space-around">
-        <button
-          class="btn btn-warning btn-text"
-          type="button"
-          @click="addToCart()"
-        >
+        <button class="btn btn-warning btn-text" type="button" @click="addToCart()">
           Add to Cart!
           <span class="material-symbols-outlined"> add_shopping_cart </span>
         </button>
         <button class="btn btn-primary" type="button">
-          Buy Now!<span class="material-symbols-outlined"> shopping_bag </span>
+          Buy Now!
+          <span class="material-symbols-outlined"> shopping_bag </span>
         </button>
       </div>
     </div>

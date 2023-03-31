@@ -22,3 +22,9 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Modification Bulma
+```
+Impossiblité d'installer Bulma même en local sur ce projet 
+```
