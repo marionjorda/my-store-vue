@@ -51,8 +51,8 @@ export default {
       fetch("https://dummyjson.com/products/")
         .then((res) => res.json())
         .then((json) => {
-          this.ProductList = json;
-          this.allProducts = json;
+          this.ProductList = json.products;
+          this.allProducts = json.products;
         });
     },
     filteredItems(category) {

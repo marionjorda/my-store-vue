@@ -24,7 +24,7 @@
               <tr v-for="product in allItems" :key="product.id">
                 <td>{{product.id}}</td>
                 <td class="d-flex">
-                  <img :src="product.images"/>
+                  <img :src="product.img"/>
                   <span>{{product.title}}</span>
                 </td>
                 <td>

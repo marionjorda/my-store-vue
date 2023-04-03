@@ -1,6 +1,6 @@
 <template>
   <div class="card shadow-sm">
-    <img class="card-img-top card-image" :src="product.images" alt="Card image cap"/>
+    <img class="card-img-top card-image" :src="product.thumbnail" alt="Card image cap"/>
     <div class="card-body">
       <h5 class="card-title" @click="productDetails(product.id)">{{ product.title }}</h5>
       <h5 class="card-title">{{ product.price }} €</h5>
@@ -37,7 +37,7 @@ export default {
       const product = {
         id: this.product.id,
         title: this.product.title,
-        img: this.product.image,
+        img: this.product.thumbnail,
         price: this.product.price,
       };
       this.$store.commit("cart/SET_ITEM", product);

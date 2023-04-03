@@ -3,7 +3,7 @@
   <div class="container">
     <div class="card shadow">
       <h5 class="card-title">{{ product.title }}</h5>
-      <img class="card-img-top card-image" :src="product.image" alt="Card image cap"/>
+      <img class="card-img-top card-image" :src="product.thumbnail" alt="Card image cap"/>
       <div class="card-body">
         <h5 class="card-title">{{ product.price }} €</h5>
         <p class="card-text desc">{{ product.description }}</p>

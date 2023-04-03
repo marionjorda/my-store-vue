@@ -27,7 +27,7 @@ const mutations = {
         let result = state.cart;
             
         let resObj = result.find(resObj => resObj.id === item.id);
-        resObj ? resObj.count++ : result.push({'id':item.id, 'title': item.title, "img":item.images, "price":item.price, 'count': 1});
+        resObj ? resObj.count++ : result.push({'id':item.id, 'title': item.title, "img":item.img, "price":item.price, 'count': 1});
         
         state.cart = result
         // state.cart.push(item);
