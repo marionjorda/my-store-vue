@@ -1,5 +1,10 @@
 <template>
   <the-header class="shadow-sm"></the-header>
+  <div class="pagination">
+    <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
+    <span>{{currentPage}}</span>
+    <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
+  </div>
   <div class="layout">
     <div class="section1">
       <p class="sidebar-title">Categories</p>
@@ -29,6 +34,8 @@ export default {
       categoryList: [],
       ProductList: [],
       allProducts: [],
+      currentPage: 0,
+      perPage: 10,
     };
   },
   created() {
@@ -39,6 +46,14 @@ export default {
     ...mapState("cart", ["cart"]),
     cart() {
       console.log("cart chanf=ged");
+    },
+    totalPages() {
+      return Math.ceil(this.ProductList.length / this.perPage);
+    },
+    paginatedProducts() {
+      const start = (this.currentPage - 1) * this.perPage;
+      const end = start + this.perPage;
+      return this.ProductList.slice(start, end);
     },
   },
   methods: {
@@ -62,12 +77,23 @@ export default {
       this.ProductList = filteredItems;
     },
     filteredProducts(searchTerm) {
-  const filteredProducts = this.allProducts.filter((item) => {
+    const filteredProducts = this.allProducts.filter((item) => {
     const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSearchTerm;
   });
   this.ProductList = filteredProducts;
-},
+  this.currentPage = 1;
+  },
+  prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
   },
 };
 </script>
