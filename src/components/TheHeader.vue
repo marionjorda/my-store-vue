@@ -1,19 +1,13 @@
 <template>
   <nav class="navbar">
-  <i class="material-icons menu-icon">
-    menu
-  </i>
+  <i class="material-icons menu-icon"> menu </i>
   <div class="logo">
-    <div class="text"> My Store
-    </div>
+    <div class="text"> My Store </div>
   </div>
   <div class="item search right" tabindex="0">
     <div class="search-group">
-      
-    <input type="text">
-    <i class="material-icons search-icon">
-      search
-    </i>
+      <input type="text" placeholder="Recherche">
+        <i class="material-icons search-icon"> search </i>
       </div>
   </div>
 
@@ -35,9 +29,15 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
+  data(){
+    return {
+      title: "My Store",
+      filter: "",
+    }
+  },
   computed:{
        ...mapState('cart', ['cart']),
      },
