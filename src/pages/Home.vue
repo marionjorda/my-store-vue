@@ -61,6 +61,13 @@ export default {
       });
       this.ProductList = filteredItems;
     },
+    filteredProducts(searchTerm) {
+  const filteredProducts = this.allProducts.filter((item) => {
+    const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesSearchTerm;
+  });
+  this.ProductList = filteredProducts;
+},
   },
 };
 </script>

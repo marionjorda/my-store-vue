@@ -6,12 +6,16 @@
   </div>
   <div class="item search right" tabindex="0">
     <div class="search-group">
-      <input type="text" placeholder="Recherche">
+      <input type="text" v-model="filter" @keyup.enter="searchItems(filter)" placeholder="Recherche">
+        <i class="material-icons search-icon" @click="searchItems(filter)"> search </i>
+      </div>
+  </div>
+  <div class="item search right" tabindex="0">
+    <div class="search-group">
+      <input type="text" placeholder="Prix">
         <i class="material-icons search-icon"> search </i>
       </div>
   </div>
-
-
   <a href="" class="item">
     <div class="group">
       <router-link to="/cart">
@@ -35,17 +39,36 @@ export default {
   data(){
     return {
       title: "My Store",
-      filter: "",
+      ProductList: [],
+      allProducts: [],
+      categoryList: [],
+      filter: '',
     }
   },
   computed:{
-       ...mapState('cart', ['cart']),
-     },
-     watch:{
-       data(newV,oldV){
-         console.log(oldV+"----->"+newV)
-       }
-     }
+    ...mapState('cart', ['cart']),
+    dataUrl: function () {
+      return "https://dummyjson.com/products";
+    },
+    },
+  methods:{
+    searchItems(searchTerm) {
+      const filteredProducts = this.allProducts.filter((item) => {
+        const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesSearchTerm;
+  });
+  const filteredCategories = this.categoryList.filter((category) => {
+    return category.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+  this.ProductList = filteredProducts;
+  this.categoryList = filteredCategories;
+},
+  },
+    watch:{
+      data(newV,oldV){
+        console.log(oldV+"----->"+newV)
+      }
+    }
 }
 </script>
 
