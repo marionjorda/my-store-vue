@@ -19,7 +19,7 @@
   <a href="" class="item">
     <div class="group">
       <router-link to="/cart">
-        <i class="material-icons">
+        <i class="material-icons" style="color: black">
           shopping_cart
         </i>
       </router-link>  
@@ -78,8 +78,6 @@ export default {
 :root {
 --theme-bg-color: #9ab9f3;
 --theme-color: rgb(0, 0, 0);
-
-
 }
 * { 
   margin: 0;
@@ -101,7 +99,6 @@ export default {
   
 
 }
-
 .item{
   padding: 10px;
   text-decoration: none;
@@ -109,17 +106,14 @@ export default {
   color: var(--theme-color);
 
 }
-
 .item.right {
   margin: 0 0 0 auto;
 }
-
 .navbar .logo {
   font-size: 1.2em;
   align-items: center;
   display: flex;
 }
-
 .logo img {
   max-width: 40px;
 }
@@ -146,7 +140,6 @@ export default {
   
   color: black;
 }
-
 .item.search input {
   width: 100%;
   padding: 6px ;
@@ -155,7 +148,6 @@ export default {
   max-width: 100%;
   border: 0;
 }
-
 .item .search-group {
   display:flex;
   width: 100%;
@@ -179,29 +171,22 @@ export default {
   color: grey;
   
 }
-
 .item .group {
   display:flex;
   align-items: center;
   font-size: 0.9em;
 }
-
-
 .item .group .sub{
   font-size: 0.8em;
 
 
 }
-
 .material-icons {
   font-size:1.8rem;
 }
-
-
 .menu-icon{
   display:none;
 }
-
 @media (max-width: 700px) {
   .item.search input {
     display: none;
@@ -216,7 +201,6 @@ export default {
 
 
 }
-
 .action-btn{
   background-color:transparent;
   border: none;

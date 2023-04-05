@@ -1,10 +1,6 @@
 <template>
   <the-header class="shadow-sm"></the-header>
-  <div class="pagination">
-    <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
-    <span>{{currentPage}}</span>
-    <button @click="nextPage" :disabled="currentPage === totalPages">Next</button>
-  </div>
+
   <div class="layout">
     <div class="section1">
       <p class="sidebar-title">Categories</p>
@@ -17,6 +13,16 @@
         <item-card :product="product"></item-card>
       </div>
     </div>
+    <nav class="pagination" role="navigation" aria-label="pagination">
+      <a class="pagination-previous" @click="pageIndex--" v-if="pageIndex > 0"
+        >Previous</a>
+      <a class="pagination-next" @click="pageIndex++" v-if="pageIndex < numberOfPages - 1">Next page</a>
+      <ul class="pagination-list">
+        <li v-for="pageNumber in numberOfPages" :key="pageNumber">
+          <a class="pagination-link" :class="{ 'is-current': pageNumber === pageIndex + 1 }" :aria-label="`Page ${pageNumber}`" aria-current="page" @click="pageIndex = pageNumber - 1">{{ pageNumber }}</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -34,8 +40,8 @@ export default {
       categoryList: [],
       ProductList: [],
       allProducts: [],
-      currentPage: 0,
-      perPage: 10,
+      itemsPerPage: 10,
+      pageIndex: 0,
     };
   },
   created() {
@@ -47,13 +53,14 @@ export default {
     cart() {
       console.log("cart chanf=ged");
     },
-    totalPages() {
-      return Math.ceil(this.ProductList.length / this.perPage);
+    itemsOffset: function () {
+      return this.pageIndex * this.itemsPerPage;
     },
-    paginatedProducts() {
-      const start = (this.currentPage - 1) * this.perPage;
-      const end = start + this.perPage;
-      return this.ProductList.slice(start, end);
+    numberOfPages: function () {
+      if (!!this.filteredProducts && this.filteredProducts.length > 0)
+        return Math.ceil(this.filteredProducts.length / this.itemsPerPage);
+
+      return 0;
     },
   },
   methods: {
@@ -80,19 +87,8 @@ export default {
     const filteredProducts = this.allProducts.filter((item) => {
     const matchesSearchTerm = item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSearchTerm;
-  });
-  this.ProductList = filteredProducts;
-  this.currentPage = 1;
-  },
-  prevPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-      }
-    },
-    nextPage() {
-      if (this.currentPage < this.totalPages) {
-        this.currentPage++;
-      }
+    });
+      this.ProductList = filteredProducts;
     },
   },
 };
